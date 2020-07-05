@@ -2,33 +2,25 @@
 //
 // let spell = [Раскрошить - Crumble,]
 
-const spells = [
-    {
-        name: 'Раскрошить - Crumble',
-        school: 'Хрономант',
-        difficult: 10,
-        category: 'Линия видимости',
-        description: 'Это заклинание работает только против искусственно созданных объектов, таких как строения и стены. Волшебник стремительно ускоряет течение времени в небольшой области структуры, вызывая разрушения. Это может эффективно создать дыру в стене размеров в дверь, что обязательно отмечается на столе любым способом. Это заклинание так же может быть использовано для разрушения части пола, на котором стоит фигура этажом выше. В таком случае, фигурка подверженная эффекту должна пройти бросок воли против броска сотворения, или упасть на уровень ниже и получить повреждения как обычно.'
-    },
-    {
-        name: 'Разложение ¬ Decay',
-        school: 'Хрономант',
-        difficult: 12,
-        category: 'Линия видимости',
-        description: 'ЭВолшебник выбирает оружие цели в качестве атаки, что заставляет его гнить и разлагаться и делает недееспособным до конца игры. Это заклинание не имеет эффекта против магического оружия (даже того, что временно зачаровано).'
-    },
-    {
-        name: 'Быстродействие ¬ Fast act',
-        school: 'Хрономант',
-        difficult: 8,
-        category: 'Линия видимости',
-        description: 'Целевая фигура начнёт действовать первой в следующий ход в специальную фазу перед фазой волшебника. Если заклинание сотворено несколько раз в один ход, все такие фигуры будут действовать в специальной фазе, начиная с последней фигуры, на которую воздействовали заклинанием быстродействия и так, до первой.'
-    }
-    ]
+const request1 = new XMLHttpRequest()
 
-console.log(spells);
-// const people = [
-//     {name: 'Vladilen', budget: 4200},
-//     {name: 'Elena', budget: 3500},
-//     {name: 'Victoria', budget: 1700}
-// ]
+request1.open('GET', 'https://fonbeauty.github.io/frostgrave/json/chronomancer_spells.json')
+request1.responseType = 'json'
+request1.send()
+request1.onload = function () {
+    const chronomancerSpells = request1.response
+    console.log(chronomancerSpells);
+}
+
+const request2 = new XMLHttpRequest()
+
+request2.open('GET', 'https://fonbeauty.github.io/frostgrave/json/elementalist_spells.json')
+request2.responseType = 'json'
+request2.send()
+request2.onload = function () {
+    const elementalist = request2.response
+    console.log(elementalist);
+}
+
+
+
