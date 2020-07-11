@@ -34,19 +34,30 @@ function showSpells(schoolObject) {
     const spells = schoolObject['spells']
     for (let i = 0; i < spells.length; i++ ){
         const spellBlock = document.createElement('div')
-        const spellName = document.createElement('h2')
+        const spellName = document.createElement('h3')
+        const spellInnerBlock = document.createElement('div')
+        const schoolName = document.createElement('h3')
         const spellDifficult = document.createElement('h3')
         const spellCategory = document.createElement('h3')
         const spellDescription = document.createElement('p')
 
         spellName.textContent = spells[i].name
+        spellName.setAttribute('class', 'spell-name')
+        schoolName.textContent = schoolObject.schoolName
+        schoolName.setAttribute('class', 'spell_flex__school-name')
         spellDifficult.textContent = spells[i].difficult
+        spellDifficult.setAttribute('class', 'spell_flex__difficult')
         spellCategory.textContent = spells[i].category
+        spellCategory.setAttribute('class', 'spell_flex__spell-category')
         spellDescription.textContent = spells[i].description
 
+        spellInnerBlock.setAttribute('class', 'spell-flex')
+        spellInnerBlock.appendChild(schoolName)
+        spellInnerBlock.appendChild(spellDifficult)
+        spellInnerBlock.appendChild(spellCategory)
+
         spellBlock.appendChild(spellName)
-        spellBlock.appendChild(spellDifficult)
-        spellBlock.appendChild(spellCategory)
+        spellBlock.appendChild(spellInnerBlock)
         spellBlock.appendChild(spellDescription)
 
         schoolBlock.appendChild(spellBlock)

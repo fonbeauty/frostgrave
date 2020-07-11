@@ -21,3 +21,22 @@ h3 {
 p {
     font-size: 1rem;
 }
+
+.spell-name{
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 0.5rem;
+}
+
+
+
+.spell-flex{
+    display: flex;
+    flex-direction: row;
+    margin: 0.5rem auto;
+    max-width: fit-content;
+}
+
+.spell_flex__school-name, .spell_flex__difficult, .spell_flex__spell-category {
+    margin: 0 1rem;
+}
