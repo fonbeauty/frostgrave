@@ -15,14 +15,57 @@ request1.onload = function () {
     const chronoSchoolObj = request1.response
 
     console.log(chronoSchoolObj);
-    // showSpells(chronomancerSchool)
-    showSchool(chronoBlock, chronoSchool, chronoSchoolObj, 'chrono')
+    // showSchool(chronoBlock, chronoSchool, chronoSchoolObj, 'chrono')
+    createSchoolNodes(chronoBlock, chronoSchool, chronoSchoolObj, 'chrono')
 
+}
+
+function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
+    spellsList = document.createElement('div')
+    spellsList.setAttribute('id', school+'-spells')
+    spellsList.setAttribute('class', 'spell-list')
+    nodeBlock.appendChild(spellsList)
+    for (let i = 0; i < schoolObj.spells.length; i++) {
+        const spellContainer = document.createElement('div')
+        spellContainer.setAttribute('id', school + '-spell__container' + i)
+        spellContainer.setAttribute('class', 'spell')
+
+        const spellAttributeContainer = document.createElement('div')
+        spellAttributeContainer.setAttribute('id', school + '-spell__attribute-container' + i)
+        spellAttributeContainer.setAttribute('class', 'spell__attribute-container')
+
+        const spellName = document.createElement('div')
+        spellName.setAttribute('id', school + '-spell__name' + i)
+        spellName.setAttribute('class', 'spell__name')
+        spellName.textContent = schoolObj.spells[i].name
+
+        const spellDifficult = document.createElement('div')
+        spellDifficult.setAttribute('id', school + '-spell__difficult' + i)
+        spellDifficult.setAttribute('class', 'spell__difficult')
+        spellDifficult.textContent = schoolObj.spells[i].difficult
+
+        const spellCategory = document.createElement('div')
+        spellCategory.setAttribute('id', school + '-spell__category' + i)
+        spellCategory.setAttribute('class', 'spell__category')
+        spellCategory.textContent=schoolObj.spells[i].category
+
+        const spellDescription = document.createElement('div')
+        spellDescription.setAttribute('id', school + '-spell__description' + i)
+        spellDescription.setAttribute('class', 'spell__description')
+        spellDescription.textContent=schoolObj.spells[i].description
+
+        spellContainer.appendChild(spellAttributeContainer)
+        spellAttributeContainer.appendChild(spellName)
+        spellAttributeContainer.appendChild(spellDifficult)
+        spellAttributeContainer.appendChild(spellCategory)
+        spellContainer.appendChild(spellDescription)
+        spellsList.appendChild(spellContainer)
+    }
 }
 
 function showSchool(nodeBlock, nodeSchool, schoolObj, school) {
     nodeSchool.addEventListener('click', () => {
-        const switcher = document.getElementById(school +'0')
+        const switcher = document.getElementById(school + '0')
 
         if (!switcher) {
             spellsList = document.createElement('ul')
@@ -50,7 +93,8 @@ request2.onload = function () {
     const elementSchoolObj = request2.response
     console.log(elementSchoolObj);
     // showSpells(elementalistSchool)
-    showSchool(elemenеBlock, elementSchool, elementSchoolObj, 'element')
+    // showSchool(elemenеBlock, elementSchool, elementSchoolObj, 'element')
+    createSchoolNodes(elemenеBlock, elementSchool, elementSchoolObj, 'element')
 }
 
 

@@ -22,10 +22,40 @@ p {
     font-size: 1rem;
 }
 
+.school{
+    margin: 1rem 0;
+}
+
+.school__name{
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
 .school__name:hover{
     color: blue;
     /*background: #786b59*/
 }
+
+.spell__attribute-container{
+    margin-left: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    max-width: fit-content;
+}
+
+
+.spell__name, .spell__difficult, .spell__category{
+    margin: 0 0.5rem;
+    font-weight: bold;
+}
+
+.spell__description{
+    margin: 0 1.5rem;
+    /*display: none;*/
+}
+
+
+
 
 
 .spell-name{
