@@ -36,11 +36,19 @@ p {
     /*background: #786b59*/
 }
 
+.spell-list{
+    display: none;
+}
+
 .spell__attribute-container{
     margin-left: 0.5rem;
     display: flex;
     flex-direction: row;
     max-width: fit-content;
+}
+
+.spell__name:hover{
+    color: blue;
 }
 
 

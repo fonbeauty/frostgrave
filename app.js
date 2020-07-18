@@ -8,6 +8,7 @@ const elemenеBlock = document.getElementById('elementalist-block')
 const chronoSchool = document.getElementById('chronomancer-school')
 const elementSchool = document.getElementById('elementalist-school')
 
+
 request1.open('GET', 'https://fonbeauty.github.io/frostgrave/json/chronomancer_spells.json')
 request1.responseType = 'json'
 request1.send()
@@ -21,47 +22,63 @@ request1.onload = function () {
 }
 
 function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
-    spellsList = document.createElement('div')
-    spellsList.setAttribute('id', school+'-spells')
-    spellsList.setAttribute('class', 'spell-list')
-    nodeBlock.appendChild(spellsList)
+    const spellList = document.createElement('div')
+    setNodeAttribute(spellList, school + '-spells', 'spell-list')
+    nodeBlock.appendChild(spellList)
+    // addSchoolEventListener
+    nodeSchool.addEventListener('click', () => {
+        if (spellList.style.display === 'block'){
+            spellList.style.display = 'none'
+        } else {
+            spellList.style.display = 'block'
+        }
+    })
+
     for (let i = 0; i < schoolObj.spells.length; i++) {
         const spellContainer = document.createElement('div')
-        spellContainer.setAttribute('id', school + '-spell__container' + i)
-        spellContainer.setAttribute('class', 'spell')
+        setNodeAttribute(spellContainer, school + '-spell__container' + i, 'spell')
 
         const spellAttributeContainer = document.createElement('div')
-        spellAttributeContainer.setAttribute('id', school + '-spell__attribute-container' + i)
-        spellAttributeContainer.setAttribute('class', 'spell__attribute-container')
+        setNodeAttribute(spellAttributeContainer, school + '-spell__attribute-container' + i, 'spell__attribute-container')
 
         const spellName = document.createElement('div')
-        spellName.setAttribute('id', school + '-spell__name' + i)
-        spellName.setAttribute('class', 'spell__name')
-        spellName.textContent = schoolObj.spells[i].name
+        setNodeAttribute(spellName, school + '-spell__name' + i, 'spell__name', schoolObj.spells[i].name)
 
         const spellDifficult = document.createElement('div')
-        spellDifficult.setAttribute('id', school + '-spell__difficult' + i)
-        spellDifficult.setAttribute('class', 'spell__difficult')
-        spellDifficult.textContent = schoolObj.spells[i].difficult
+        setNodeAttribute(spellDifficult, school + '-spell__difficult' + i, 'spell__difficult', schoolObj.spells[i].difficult)
 
         const spellCategory = document.createElement('div')
-        spellCategory.setAttribute('id', school + '-spell__category' + i)
-        spellCategory.setAttribute('class', 'spell__category')
-        spellCategory.textContent=schoolObj.spells[i].category
+        setNodeAttribute(spellCategory, school + '-spell__category' + i, 'spell__category', schoolObj.spells[i].category)
 
         const spellDescription = document.createElement('div')
-        spellDescription.setAttribute('id', school + '-spell__description' + i)
-        spellDescription.setAttribute('class', 'spell__description')
-        spellDescription.textContent=schoolObj.spells[i].description
+        setNodeAttribute(spellDescription, school + '-spell__description' + i, 'spell__description', schoolObj.spells[i].description)
+        spellDescription.style.display = 'none'
 
         spellContainer.appendChild(spellAttributeContainer)
         spellAttributeContainer.appendChild(spellName)
         spellAttributeContainer.appendChild(spellDifficult)
         spellAttributeContainer.appendChild(spellCategory)
         spellContainer.appendChild(spellDescription)
-        spellsList.appendChild(spellContainer)
+        spellList.appendChild(spellContainer)
     }
 }
+
+function setNodeAttribute(node, idAttribute, classAttribute, nodeText = 'none') {
+    node.setAttribute('id', idAttribute)
+    node.setAttribute('class', classAttribute)
+    if (nodeText != 'none') {
+        node.textContent = nodeText
+    }
+}
+
+function schoolClickEventListener(element){
+    if (element.style.display === 'block'){
+        element.style.display = 'none'
+    } else {
+        element.style.display = 'block'
+    }
+}
+
 
 function showSchool(nodeBlock, nodeSchool, schoolObj, school) {
     nodeSchool.addEventListener('click', () => {
