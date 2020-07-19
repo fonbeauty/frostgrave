@@ -14,24 +14,17 @@ request1.responseType = 'json'
 request1.send()
 request1.onload = function () {
     const chronoSchoolObj = request1.response
-
     console.log(chronoSchoolObj);
-    // showSchool(chronoBlock, chronoSchool, chronoSchoolObj, 'chrono')
     createSchoolNodes(chronoBlock, chronoSchool, chronoSchoolObj, 'chrono')
-
 }
 
 function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
     const spellList = document.createElement('div')
     setNodeAttribute(spellList, school + '-spells', 'spell-list')
     nodeBlock.appendChild(spellList)
-    // addSchoolEventListener
-    nodeSchool.addEventListener('click', () => {
-        if (spellList.style.display === 'block'){
-            spellList.style.display = 'none'
-        } else {
-            spellList.style.display = 'block'
-        }
+
+    nodeSchool.addEventListener('click', function () {
+        clickEventListener(spellList)
     })
 
     for (let i = 0; i < schoolObj.spells.length; i++) {
@@ -52,7 +45,10 @@ function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
 
         const spellDescription = document.createElement('div')
         setNodeAttribute(spellDescription, school + '-spell__description' + i, 'spell__description', schoolObj.spells[i].description)
-        spellDescription.style.display = 'none'
+
+        spellName.addEventListener('click', function () {
+            clickEventListener(spellDescription)
+        })
 
         spellContainer.appendChild(spellAttributeContainer)
         spellAttributeContainer.appendChild(spellName)
@@ -71,14 +67,13 @@ function setNodeAttribute(node, idAttribute, classAttribute, nodeText = 'none') 
     }
 }
 
-function schoolClickEventListener(element){
-    if (element.style.display === 'block'){
+function clickEventListener(element) {
+    if (element.style.display === 'block') {
         element.style.display = 'none'
     } else {
         element.style.display = 'block'
     }
 }
-
 
 function showSchool(nodeBlock, nodeSchool, schoolObj, school) {
     nodeSchool.addEventListener('click', () => {
@@ -109,54 +104,9 @@ request2.send()
 request2.onload = function () {
     const elementSchoolObj = request2.response
     console.log(elementSchoolObj);
-    // showSpells(elementalistSchool)
-    // showSchool(elemenеBlock, elementSchool, elementSchoolObj, 'element')
     createSchoolNodes(elemenеBlock, elementSchool, elementSchoolObj, 'element')
 }
 
-
-function showSpells(schoolObject) {
-    let schoolBlock = document.createElement('div')
-    // let schoolName = document.createElement('h2')
-    // schoolName.textContent = schoolObject.schoolName
-    schoolBlock.innerHTML = "<h2>" + schoolObject.schoolName + "</h2>"
-    // schoolBlock.appendChild(schoolName)
-    body.appendChild(schoolBlock)
-
-    const spells = schoolObject['spells']
-    for (let i = 0; i < spells.length; i++) {
-        const spellBlock = document.createElement('div')
-        const spellName = document.createElement('h3')
-        const spellInnerBlock = document.createElement('div')
-        const schoolName = document.createElement('h3')
-        const spellDifficult = document.createElement('h3')
-        const spellCategory = document.createElement('h3')
-        const spellDescription = document.createElement('p')
-
-        spellName.textContent = spells[i].name
-        spellName.setAttribute('class', 'spell-name')
-        schoolName.textContent = schoolObject.schoolName
-        schoolName.setAttribute('class', 'spell_flex__school-name')
-        spellDifficult.textContent = spells[i].difficult
-        spellDifficult.setAttribute('class', 'spell_flex__difficult')
-        spellCategory.textContent = spells[i].category
-        spellCategory.setAttribute('class', 'spell_flex__spell-category')
-        spellDescription.textContent = spells[i].description
-
-        spellInnerBlock.setAttribute('class', 'spell-flex')
-        spellInnerBlock.appendChild(schoolName)
-        spellInnerBlock.appendChild(spellDifficult)
-        spellInnerBlock.appendChild(spellCategory)
-
-        spellBlock.appendChild(spellName)
-        spellBlock.appendChild(spellInnerBlock)
-        spellBlock.appendChild(spellDescription)
-
-        schoolBlock.appendChild(spellBlock)
-    }
-
-
-}
 
 let body = document.querySelector('body')
 
