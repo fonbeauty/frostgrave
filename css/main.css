@@ -29,9 +29,8 @@ p {
 }
 
 .school-list__school{
-    flex-basis: 10%;
     text-align: center;
-    flex-basis: 16%;
+    flex-basis: 17%;
     flex-shrink: 1;
     flex-grow: 1;
     margin: 0.2rem;
