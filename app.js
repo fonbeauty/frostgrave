@@ -16,6 +16,7 @@ request1.onload = function () {
     const chronoSchoolObj = request1.response
     console.log(chronoSchoolObj);
     createSchoolNodes(chronoBlock, chronoSchool, chronoSchoolObj, 'chrono')
+    addButtonClickEventListener(chronoSchoolObj)
 }
 
 function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
@@ -24,7 +25,7 @@ function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
     nodeBlock.appendChild(spellList)
 
     nodeSchool.addEventListener('click', function () {
-        clickEventListener(spellList)
+        spellClickEventListener(spellList)
     })
 
     for (let i = 0; i < schoolObj.spells.length; i++) {
@@ -47,7 +48,7 @@ function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
         setNodeAttribute(spellDescription, school + '-spell__description' + i, 'spell__description', schoolObj.spells[i].description)
 
         spellAttributeContainer.addEventListener('click', function () {
-            clickEventListener(spellDescription)
+            spellClickEventListener(spellDescription)
         })
 
         spellContainer.appendChild(spellAttributeContainer)
@@ -59,6 +60,30 @@ function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
     }
 }
 
+function addButtonClickEventListener(schoolObj) {
+    document.getElementById(schoolObj.schoolName).addEventListener('click', () => {
+
+        let tempNode = document.getElementById(schoolObj.schoolName)
+        tempNode.style.background = 'cornflowerblue'
+        for (let i = 0; i < schoolObj.alignedSchool.length; i++) {
+            tempNode = document.getElementById(schoolObj.alignedSchool[i])
+            tempNode.style.background = 'lightgreen'
+            // tempNode.firstChild.textContent = ' +2'
+            // tempNode.textContent = tempNode.textContent + ' +2'
+        }
+        for (let i = 0; i < schoolObj.neutralSchool.length; i++) {
+            tempNode = document.getElementById(schoolObj.neutralSchool[i])
+            tempNode.style.background = 'khaki'
+            // tempNode.textContent = tempNode.textContent + ' +4'
+            // tempNode.firstChild.textContent = ' +4'
+        }
+        tempNode = document.getElementById(schoolObj.opposedSchool)
+        tempNode.style.background = 'tomato'
+        // tempNode.textContent = tempNode.textContent + ' +6'
+        // tempNode.firstChild.textContent = ' +6'
+    })
+}
+
 function setNodeAttribute(node, idAttribute, classAttribute, nodeText = 'none') {
     node.setAttribute('id', idAttribute)
     node.setAttribute('class', classAttribute)
@@ -67,7 +92,7 @@ function setNodeAttribute(node, idAttribute, classAttribute, nodeText = 'none') 
     }
 }
 
-function clickEventListener(element) {
+function spellClickEventListener(element) {
     if (element.style.display === 'block') {
         element.style.display = 'none'
     } else {
@@ -84,6 +109,7 @@ request2.onload = function () {
     const elementSchoolObj = request2.response
     console.log(elementSchoolObj);
     createSchoolNodes(elemenеBlock, elementSchool, elementSchoolObj, 'element')
+    addButtonClickEventListener(elementSchoolObj)
 }
 
 
