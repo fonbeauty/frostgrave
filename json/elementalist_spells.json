@@ -1,8 +1,8 @@
 {
   "schoolName": "Элементалисты",
-  "alignedSchool": ["Призыватели", "Заклинатели", "Хрономанты"],
-  "neutralSchool": ["Чудотворцы", "Предсказатели", "Символисты", "Знахари", "Некроманты"],
-  "opposedSchool": "Иллюзионисты",
+  "alignedSchool": ["summon", "enchant", "chrono"],
+  "neutralSchool": ["thaumat", "sooth", "sigil", "witch", "necro"],
+  "opposedSchool": "illusion",
   "spells": [
     {
       "name": "Вызов бури - Call storm",

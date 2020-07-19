@@ -1,8 +1,8 @@
 {
   "schoolName": "Хрономанты",
-  "alignedSchool": ["Некроманты", "Предсказатели", "Элементалисты"],
-  "neutralSchool": ["Чудотворцы", "Призыватели", "Иллюзионисты", "Знахари", "Символисты"],
-  "opposedSchool": "Заклинатели",
+  "alignedSchool": ["necro", "sooth", "element"],
+  "neutralSchool": ["thaumat", "summon", "illusion", "witch", "sigil"],
+  "opposedSchool": "enchant",
   "spells": [
     {
       "name": "Раскрошить - Crumble",
