@@ -46,7 +46,7 @@ function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
         const spellDescription = document.createElement('div')
         setNodeAttribute(spellDescription, school + '-spell__description' + i, 'spell__description', schoolObj.spells[i].description)
 
-        spellName.addEventListener('click', function () {
+        spellAttributeContainer.addEventListener('click', function () {
             clickEventListener(spellDescription)
         })
 
@@ -73,27 +73,6 @@ function clickEventListener(element) {
     } else {
         element.style.display = 'block'
     }
-}
-
-function showSchool(nodeBlock, nodeSchool, schoolObj, school) {
-    nodeSchool.addEventListener('click', () => {
-        const switcher = document.getElementById(school + '0')
-
-        if (!switcher) {
-            spellsList = document.createElement('ul')
-            nodeBlock.appendChild(spellsList)
-            for (let i = 0; i < schoolObj.spells.length; i++) {
-                const listItem = document.createElement('li')
-                listItem.setAttribute('id', school + i)
-                listItem.setAttribute('class', 'spell')
-                listItem.textContent = schoolObj.spells[i].name
-                spellsList.appendChild(listItem)
-            }
-        } else {
-
-        }
-    })
-
 }
 
 const request2 = new XMLHttpRequest()

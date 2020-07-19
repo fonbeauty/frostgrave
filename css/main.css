@@ -22,6 +22,20 @@ p {
     font-size: 1rem;
 }
 
+.school-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.school-list__school{
+    min-width: 8rem;
+    text-align: center;
+    flex: 0 20%;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
 .school{
     margin: 1rem 0;
 }
@@ -33,7 +47,6 @@ p {
 
 .school__name:hover{
     color: blue;
-    /*background: #786b59*/
 }
 
 .spell-list{
@@ -46,11 +59,9 @@ p {
     flex-direction: row;
     max-width: fit-content;
 }
-
-.spell__name:hover{
+.spell__attribute-container:hover{
     color: blue;
 }
-
 
 .spell__name, .spell__difficult, .spell__category{
     margin: 0 0.5rem;
@@ -60,20 +71,13 @@ p {
 .spell__description{
     margin: 0.3rem 1.5rem 0.3rem 1.5rem;
     display: none;
-    /*display: none;*/
 }
-
-
-
-
 
 .spell-name{
     text-align: center;
     font-size: 1.6rem;
     margin: 0.5rem;
 }
-
-
 
 .spell-flex{
     display: flex;
