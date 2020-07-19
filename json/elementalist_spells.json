@@ -1,5 +1,5 @@
 {
-  "schoolName": "Элементалисты",
+  "schoolName": "element",
   "alignedSchool": ["summon", "enchant", "chrono"],
   "neutralSchool": ["thaumat", "sooth", "sigil", "witch", "necro"],
   "opposedSchool": "illusion",

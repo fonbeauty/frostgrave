@@ -1,5 +1,5 @@
 {
-  "schoolName": "Хрономанты",
+  "schoolName": "chrono",
   "alignedSchool": ["necro", "sooth", "element"],
   "neutralSchool": ["thaumat", "summon", "illusion", "witch", "sigil"],
   "opposedSchool": "enchant",
