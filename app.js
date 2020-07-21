@@ -1,19 +1,14 @@
-// let chronomancer = []
-//
-// let spell = [Раскрошить - Crumble,]
+
+
 
 const request1 = new XMLHttpRequest()
-const chronoBlock = document.getElementById('chronomancer-block')
-const elemenеBlock = document.getElementById('elementalist-block')
-const chronoSchool = document.getElementById('chronomancer-school')
-const elementSchool = document.getElementById('elementalist-school')
-
-
 request1.open('GET', 'https://fonbeauty.github.io/frostgrave/json/chronomancer_spells.json')
 request1.responseType = 'json'
 request1.send()
 request1.onload = function () {
     const chronoSchoolObj = request1.response
+    const chronoBlock = document.getElementById('chrono-block')
+    const chronoSchool = document.getElementById('chrono-school')
     console.log(chronoSchoolObj);
     createSchoolNodes(chronoBlock, chronoSchool, chronoSchoolObj, 'chrono')
     addButtonClickEventListener(chronoSchoolObj)
@@ -64,9 +59,13 @@ function addButtonClickEventListener(schoolObj) {
     document.getElementById(schoolObj.schoolName).addEventListener('click', () => {
 
         let tempNode = document.getElementById(schoolObj.schoolName)
-        tempNode.style.background = 'cornflowerblue'
+        tempNode.style.background = 'lightblue'
+        tempNode = document.getElementById(schoolObj.schoolName + '-school')
+        tempNode.style.background = 'lightblue'
         for (let i = 0; i < schoolObj.alignedSchool.length; i++) {
             tempNode = document.getElementById(schoolObj.alignedSchool[i])
+            tempNode.style.background = 'lightgreen'
+            tempNode = document.getElementById(schoolObj.alignedSchool[i] + '-school')
             tempNode.style.background = 'lightgreen'
             // tempNode.firstChild.textContent = ' +2'
             // tempNode.textContent = tempNode.textContent + ' +2'
@@ -74,10 +73,14 @@ function addButtonClickEventListener(schoolObj) {
         for (let i = 0; i < schoolObj.neutralSchool.length; i++) {
             tempNode = document.getElementById(schoolObj.neutralSchool[i])
             tempNode.style.background = 'khaki'
+            tempNode = document.getElementById(schoolObj.neutralSchool[i] + '-school')
+            tempNode.style.background = 'khaki'
             // tempNode.textContent = tempNode.textContent + ' +4'
             // tempNode.firstChild.textContent = ' +4'
         }
         tempNode = document.getElementById(schoolObj.opposedSchool)
+        tempNode.style.background = 'tomato'
+        tempNode = document.getElementById(schoolObj.opposedSchool + '-school')
         tempNode.style.background = 'tomato'
         // tempNode.textContent = tempNode.textContent + ' +6'
         // tempNode.firstChild.textContent = ' +6'
@@ -107,9 +110,24 @@ request2.responseType = 'json'
 request2.send()
 request2.onload = function () {
     const elementSchoolObj = request2.response
+    const elemenеBlock = document.getElementById('element-block')
+    const elementSchool = document.getElementById('element-school')
     console.log(elementSchoolObj);
     createSchoolNodes(elemenеBlock, elementSchool, elementSchoolObj, 'element')
     addButtonClickEventListener(elementSchoolObj)
+}
+
+const request3 = new XMLHttpRequest()
+request3.open('GET', 'https://fonbeauty.github.io/frostgrave/json/enchanter_spells.json')
+request3.responseType = 'json'
+request3.send()
+request3.onload = function () {
+    const enchantSchoolObj = request3.response
+    const enchantBlock = document.getElementById('enchant-block')
+    const enchantSchool = document.getElementById('enchant-school')
+    console.log(enchantSchoolObj);
+    createSchoolNodes(enchantBlock, enchantSchool, enchantSchoolObj, 'element')
+    addButtonClickEventListener(enchantSchoolObj)
 }
 
 

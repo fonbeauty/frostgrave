@@ -7,15 +7,15 @@ html {
 }
 
 h1 {
-    font-size: 2rem;
-}
-
-h2 {
     font-size: 1.6rem;
 }
 
+h2 {
+    font-size: 1.4rem;
+}
+
 h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 p {
@@ -43,11 +43,11 @@ p {
 }
 
 .school{
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 }
 
 .school__name{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
