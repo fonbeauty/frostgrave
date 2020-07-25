@@ -1,6 +1,3 @@
-
-
-
 const request1 = new XMLHttpRequest()
 request1.open('GET', 'https://fonbeauty.github.io/frostgrave/json/chronomancer_spells.json')
 request1.responseType = 'json'
@@ -35,6 +32,8 @@ function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
 
         const spellDifficult = document.createElement('div')
         setNodeAttribute(spellDifficult, school + '-spell__difficult' + i, 'spell__difficult', schoolObj.spells[i].difficult)
+        const spellModDifficult = document.createElement('div')
+        setNodeAttribute(spellModDifficult, school + '-spell__mod-difficult' + i, 'spell__mod-difficult', schoolObj.spells[i].difficult)
 
         const spellCategory = document.createElement('div')
         setNodeAttribute(spellCategory, school + '-spell__category' + i, 'spell__category', schoolObj.spells[i].category)
@@ -49,6 +48,7 @@ function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
         spellContainer.appendChild(spellAttributeContainer)
         spellAttributeContainer.appendChild(spellName)
         spellAttributeContainer.appendChild(spellDifficult)
+        spellAttributeContainer.appendChild(spellModDifficult)
         spellAttributeContainer.appendChild(spellCategory)
         spellContainer.appendChild(spellDescription)
         spellList.appendChild(spellContainer)
@@ -60,28 +60,34 @@ function addButtonClickEventListener(schoolObj) {
 
         let tempNode = document.getElementById(schoolObj.schoolName)
         tempNode.style.background = 'lightblue'
-        tempNode = document.getElementById(schoolObj.schoolName + '-school')
+        tempNode = document.getElementById(schoolObj.schoolName + '-block')
         tempNode.style.background = 'lightblue'
+        document.getElementById(schoolObj.schoolName + '-school__diff').textContent = '+0'
         for (let i = 0; i < schoolObj.alignedSchool.length; i++) {
             tempNode = document.getElementById(schoolObj.alignedSchool[i])
             tempNode.style.background = 'lightgreen'
-            tempNode = document.getElementById(schoolObj.alignedSchool[i] + '-school')
+            tempNode = document.getElementById(schoolObj.alignedSchool[i] + '-block')
             tempNode.style.background = 'lightgreen'
+            document.getElementById(schoolObj.alignedSchool[i] + '-school__diff').textContent = '+2'
             // tempNode.firstChild.textContent = ' +2'
             // tempNode.textContent = tempNode.textContent + ' +2'
         }
         for (let i = 0; i < schoolObj.neutralSchool.length; i++) {
             tempNode = document.getElementById(schoolObj.neutralSchool[i])
             tempNode.style.background = 'khaki'
-            tempNode = document.getElementById(schoolObj.neutralSchool[i] + '-school')
+            tempNode = document.getElementById(schoolObj.neutralSchool[i] + '-block')
             tempNode.style.background = 'khaki'
+            document.getElementById(schoolObj.neutralSchool[i] + '-school__diff').textContent = '+4'
             // tempNode.textContent = tempNode.textContent + ' +4'
             // tempNode.firstChild.textContent = ' +4'
         }
         tempNode = document.getElementById(schoolObj.opposedSchool)
         tempNode.style.background = 'tomato'
-        tempNode = document.getElementById(schoolObj.opposedSchool + '-school')
+        tempNode = document.getElementById(schoolObj.opposedSchool + '-block')
         tempNode.style.background = 'tomato'
+        document.getElementById(schoolObj.opposedSchool + '-school__diff').textContent = '+6'
+
+        // console.log('ololo ', document.getElementsByClassName('spell__difficult'))
         // tempNode.textContent = tempNode.textContent + ' +6'
         // tempNode.firstChild.textContent = ' +6'
     })
@@ -126,7 +132,7 @@ request3.onload = function () {
     const enchantBlock = document.getElementById('enchant-block')
     const enchantSchool = document.getElementById('enchant-school')
     console.log(enchantSchoolObj);
-    createSchoolNodes(enchantBlock, enchantSchool, enchantSchoolObj, 'element')
+    createSchoolNodes(enchantBlock, enchantSchool, enchantSchoolObj, 'enchant')
     addButtonClickEventListener(enchantSchoolObj)
 }
 
