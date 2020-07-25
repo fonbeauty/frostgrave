@@ -2,7 +2,7 @@ html {
     font-size: 16px;
 }
 
-.main-header{
+.main-header {
     text-align: center;
 }
 
@@ -22,13 +22,13 @@ p {
     font-size: 1rem;
 }
 
-.school-list{
+.school-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
-.school-list__school{
+.school-list__school {
     text-align: center;
     flex-basis: 17%;
     flex-shrink: 1;
@@ -42,51 +42,58 @@ p {
     word-wrap: break-word;
 }
 
-.school{
+.school {
     margin: 0.5rem 0;
 }
 
-.school__name{
+.school__name {
     font-size: 1.2rem;
     font-weight: bold;
 }
 
-.school__name:hover{
+.school__name:hover {
     color: blue;
 }
 
-.spell-list{
+.spell-list {
     display: none;
 }
 
-.spell__attribute-container{
+.spell__attribute-container {
     margin-left: 0.5rem;
     display: flex;
     flex-direction: row;
     max-width: fit-content;
 }
-.spell__attribute-container:hover{
+
+.spell__attribute-container:hover {
     color: blue;
 }
 
-.spell__name, .spell__difficult, .spell__category{
-    margin: 0 0.5rem;
+.spell__name, .spell__difficult, .spell__category {
+    /*margin: 0 0.5rem;*/
+    margin-left: 0.5rem;
     font-weight: bold;
 }
 
-.spell__description{
+.spell__mod-difficult {
+
+    font-weight: bold;
+}
+
+.spell__description {
     padding: 0.3rem 1.5rem 0.3rem 1.5rem;
     display: none;
     background: white;
 }
 
-.spell-name{
+.spell-name {
     text-align: center;
     font-size: 1.6rem;
     margin: 0.5rem;
 }
 
-.spell-flex{
+.spell-flex {
     display: flex;
     flex-direction: row;
     margin: 0.5rem auto;

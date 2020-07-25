@@ -33,7 +33,7 @@ function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
         const spellDifficult = document.createElement('div')
         setNodeAttribute(spellDifficult, school + '-spell__difficult' + i, 'spell__difficult', schoolObj.spells[i].difficult)
         const spellModDifficult = document.createElement('div')
-        setNodeAttribute(spellModDifficult, school + '-spell__mod-difficult' + i, 'spell__mod-difficult', schoolObj.spells[i].difficult)
+        setNodeAttribute(spellModDifficult, school + '-spell__mod-difficult' + i, 'spell__mod-difficult', '+0')
 
         const spellCategory = document.createElement('div')
         setNodeAttribute(spellCategory, school + '-spell__category' + i, 'spell__category', schoolObj.spells[i].category)
@@ -63,6 +63,7 @@ function addButtonClickEventListener(schoolObj) {
         tempNode = document.getElementById(schoolObj.schoolName + '-block')
         tempNode.style.background = 'lightblue'
         document.getElementById(schoolObj.schoolName + '-school__diff').textContent = '+0'
+
         for (let i = 0; i < schoolObj.alignedSchool.length; i++) {
             tempNode = document.getElementById(schoolObj.alignedSchool[i])
             tempNode.style.background = 'lightgreen'
