@@ -57,10 +57,17 @@ p {
 
 .spell-list {
     display: none;
+    /*border: 1px solid;*/
+    /*border-radius: 0.4rem;*/
+}
+
+.spell{
+    border: 1px solid;
+    border-radius: 0.4rem;
 }
 
 .spell__attribute-container {
-    margin-left: 0.5rem;
+    /*margin-left: 0.5rem;*/
     display: flex;
     flex-direction: row;
     max-width: fit-content;
@@ -71,7 +78,6 @@ p {
 }
 
 .spell__name, .spell__difficult, .spell__category {
-    /*margin: 0 0.5rem;*/
     margin-left: 0.5rem;
     font-weight: bold;
 }
@@ -81,8 +87,9 @@ p {
     font-weight: bold;
 }
 
+
 .spell__description {
-    padding: 0.3rem 1.5rem 0.3rem 1.5rem;
+    padding: 0.3rem 1rem 0.3rem 1rem;
     display: none;
     background: white;
 }
