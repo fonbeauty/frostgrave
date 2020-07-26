@@ -37,6 +37,19 @@ request3.onload = function () {
     addButtonClickEventListener(enchantSchoolObj)
 }
 
+const request4 = new XMLHttpRequest()
+request4.open('GET', 'https://fonbeauty.github.io/frostgrave/json/illusionist_spells.json')
+request4.responseType = 'json'
+request4.send()
+request4.onload = function () {
+    const illusionSchoolObj = request4.response
+    const illusionBlock = document.getElementById('enchant-block')
+    const illusionSchool = document.getElementById('enchant-school')
+    console.log(illusionSchoolObj);
+    createSchoolNodes(illusionBlock, illusionSchool, illusionSchoolObj, 'enchant')
+    addButtonClickEventListener(illusionSchoolObj)
+}
+
 function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
     const spellList = document.createElement('div')
     setNodeAttribute(spellList, school + '-spells', 'spell-list')
@@ -123,5 +136,5 @@ function spellClickEventListener(element) {
 
 
 
-let body = document.querySelector('body')
+// let body = document.querySelector('body')
 
