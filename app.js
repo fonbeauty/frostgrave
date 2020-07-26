@@ -43,10 +43,10 @@ request4.responseType = 'json'
 request4.send()
 request4.onload = function () {
     const illusionSchoolObj = request4.response
-    const illusionBlock = document.getElementById('enchant-block')
-    const illusionSchool = document.getElementById('enchant-school')
+    const illusionBlock = document.getElementById('illusion-block')
+    const illusionSchool = document.getElementById('illusion-school')
     console.log(illusionSchoolObj);
-    createSchoolNodes(illusionBlock, illusionSchool, illusionSchoolObj, 'enchant')
+    createSchoolNodes(illusionBlock, illusionSchool, illusionSchoolObj, 'illusion')
     addButtonClickEventListener(illusionSchoolObj)
 }
 
@@ -132,9 +132,3 @@ function spellClickEventListener(element) {
         element.style.display = 'block'
     }
 }
-
-
-
-
-// let body = document.querySelector('body')
-
