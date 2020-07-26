@@ -11,6 +11,32 @@ request1.onload = function () {
     addButtonClickEventListener(chronoSchoolObj)
 }
 
+const request2 = new XMLHttpRequest()
+request2.open('GET', 'https://fonbeauty.github.io/frostgrave/json/elementalist_spells.json')
+request2.responseType = 'json'
+request2.send()
+request2.onload = function () {
+    const elementSchoolObj = request2.response
+    const elemenеBlock = document.getElementById('element-block')
+    const elementSchool = document.getElementById('element-school')
+    console.log(elementSchoolObj);
+    createSchoolNodes(elemenеBlock, elementSchool, elementSchoolObj, 'element')
+    addButtonClickEventListener(elementSchoolObj)
+}
+
+const request3 = new XMLHttpRequest()
+request3.open('GET', 'https://fonbeauty.github.io/frostgrave/json/enchanter_spells.json')
+request3.responseType = 'json'
+request3.send()
+request3.onload = function () {
+    const enchantSchoolObj = request3.response
+    const enchantBlock = document.getElementById('enchant-block')
+    const enchantSchool = document.getElementById('enchant-school')
+    console.log(enchantSchoolObj);
+    createSchoolNodes(enchantBlock, enchantSchool, enchantSchoolObj, 'enchant')
+    addButtonClickEventListener(enchantSchoolObj)
+}
+
 function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
     const spellList = document.createElement('div')
     setNodeAttribute(spellList, school + '-spells', 'spell-list')
@@ -57,41 +83,25 @@ function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
 
 function addButtonClickEventListener(schoolObj) {
     document.getElementById(schoolObj.schoolName).addEventListener('click', () => {
-
-        let tempNode = document.getElementById(schoolObj.schoolName)
-        tempNode.style.background = 'lightblue'
-        tempNode = document.getElementById(schoolObj.schoolName + '-block')
-        tempNode.style.background = 'lightblue'
-        document.getElementById(schoolObj.schoolName + '-school__diff').textContent = '+0'
-
+        stylingNodes(schoolObj.schoolName, 'lightblue', '0')
         for (let i = 0; i < schoolObj.alignedSchool.length; i++) {
-            tempNode = document.getElementById(schoolObj.alignedSchool[i])
-            tempNode.style.background = 'lightgreen'
-            tempNode = document.getElementById(schoolObj.alignedSchool[i] + '-block')
-            tempNode.style.background = 'lightgreen'
-            document.getElementById(schoolObj.alignedSchool[i] + '-school__diff').textContent = '+2'
-            // tempNode.firstChild.textContent = ' +2'
-            // tempNode.textContent = tempNode.textContent + ' +2'
+            stylingNodes(schoolObj.alignedSchool[i], 'lightgreen', '2')
         }
         for (let i = 0; i < schoolObj.neutralSchool.length; i++) {
-            tempNode = document.getElementById(schoolObj.neutralSchool[i])
-            tempNode.style.background = 'khaki'
-            tempNode = document.getElementById(schoolObj.neutralSchool[i] + '-block')
-            tempNode.style.background = 'khaki'
-            document.getElementById(schoolObj.neutralSchool[i] + '-school__diff').textContent = '+4'
-            // tempNode.textContent = tempNode.textContent + ' +4'
-            // tempNode.firstChild.textContent = ' +4'
+            stylingNodes(schoolObj.neutralSchool[i], 'khaki', '4')
         }
-        tempNode = document.getElementById(schoolObj.opposedSchool)
-        tempNode.style.background = 'tomato'
-        tempNode = document.getElementById(schoolObj.opposedSchool + '-block')
-        tempNode.style.background = 'tomato'
-        document.getElementById(schoolObj.opposedSchool + '-school__diff').textContent = '+6'
-
-        // console.log('ololo ', document.getElementsByClassName('spell__difficult'))
-        // tempNode.textContent = tempNode.textContent + ' +6'
-        // tempNode.firstChild.textContent = ' +6'
+        stylingNodes(schoolObj.opposedSchool, 'tomato', '6')
     })
+}
+
+function stylingNodes(schoolName, color, difficult) {
+    document.getElementById(schoolName).style.background = color
+    document.getElementById(schoolName + '-block').style.background = color
+    document.getElementById(schoolName + '-school__diff').textContent = '+' + difficult
+    for (let element of document.querySelectorAll('#' + schoolName + '-spells > .spell')) {
+        element.querySelector('.spell__mod-difficult').textContent = '+' + difficult
+    }
+
 }
 
 function setNodeAttribute(node, idAttribute, classAttribute, nodeText = 'none') {
@@ -110,32 +120,7 @@ function spellClickEventListener(element) {
     }
 }
 
-const request2 = new XMLHttpRequest()
 
-request2.open('GET', 'https://fonbeauty.github.io/frostgrave/json/elementalist_spells.json')
-request2.responseType = 'json'
-request2.send()
-request2.onload = function () {
-    const elementSchoolObj = request2.response
-    const elemenеBlock = document.getElementById('element-block')
-    const elementSchool = document.getElementById('element-school')
-    console.log(elementSchoolObj);
-    createSchoolNodes(elemenеBlock, elementSchool, elementSchoolObj, 'element')
-    addButtonClickEventListener(elementSchoolObj)
-}
-
-const request3 = new XMLHttpRequest()
-request3.open('GET', 'https://fonbeauty.github.io/frostgrave/json/enchanter_spells.json')
-request3.responseType = 'json'
-request3.send()
-request3.onload = function () {
-    const enchantSchoolObj = request3.response
-    const enchantBlock = document.getElementById('enchant-block')
-    const enchantSchool = document.getElementById('enchant-school')
-    console.log(enchantSchoolObj);
-    createSchoolNodes(enchantBlock, enchantSchool, enchantSchoolObj, 'enchant')
-    addButtonClickEventListener(enchantSchoolObj)
-}
 
 
 let body = document.querySelector('body')
