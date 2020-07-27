@@ -1,54 +1,74 @@
-const request1 = new XMLHttpRequest()
-request1.open('GET', 'https://fonbeauty.github.io/frostgrave/json/chrono_spells.json')
-request1.responseType = 'json'
-request1.send()
-request1.onload = function () {
-    const chronoSchoolObj = request1.response
-    const chronoBlock = document.getElementById('chrono-block')
-    const chronoSchool = document.getElementById('chrono-school')
-    console.log(chronoSchoolObj);
-    createSchoolNodes(chronoBlock, chronoSchool, chronoSchoolObj, 'chrono')
-    addButtonClickEventListener(chronoSchoolObj)
+for (let element of document.querySelectorAll('.school-list__school')) {
+    getSchoolDataFile(element.getAttribute('id'))
 }
 
-const request2 = new XMLHttpRequest()
-request2.open('GET', 'https://fonbeauty.github.io/frostgrave/json/element_spells.json')
-request2.responseType = 'json'
-request2.send()
-request2.onload = function () {
-    const elementSchoolObj = request2.response
-    const elemenеBlock = document.getElementById('element-block')
-    const elementSchool = document.getElementById('element-school')
-    console.log(elementSchoolObj);
-    createSchoolNodes(elemenеBlock, elementSchool, elementSchoolObj, 'element')
-    addButtonClickEventListener(elementSchoolObj)
+function getSchoolDataFile(schoolName) {
+    console.log(schoolName)
+    const request = new XMLHttpRequest()
+    request.open('GET', 'https://fonbeauty.github.io/frostgrave/json/' + schoolName + '_spells.json')
+    request.responseType = 'json'
+    request.send()
+    request.onload = function () {
+        const schoolObj = request.response
+        const schoolBlock = document.getElementById(schoolName + '-block')
+        const school = document.getElementById(schoolName + '-school')
+        console.log(schoolObj);
+        createSchoolNodes(schoolBlock, school, schoolObj, schoolName)
+        addButtonClickEventListener(schoolObj)
+    }
 }
 
-const request3 = new XMLHttpRequest()
-request3.open('GET', 'https://fonbeauty.github.io/frostgrave/json/enchant_spells.json')
-request3.responseType = 'json'
-request3.send()
-request3.onload = function () {
-    const enchantSchoolObj = request3.response
-    const enchantBlock = document.getElementById('enchant-block')
-    const enchantSchool = document.getElementById('enchant-school')
-    console.log(enchantSchoolObj);
-    createSchoolNodes(enchantBlock, enchantSchool, enchantSchoolObj, 'enchant')
-    addButtonClickEventListener(enchantSchoolObj)
-}
-
-const request4 = new XMLHttpRequest()
-request4.open('GET', 'https://fonbeauty.github.io/frostgrave/json/illusion_spells.json')
-request4.responseType = 'json'
-request4.send()
-request4.onload = function () {
-    const illusionSchoolObj = request4.response
-    const illusionBlock = document.getElementById('illusion-block')
-    const illusionSchool = document.getElementById('illusion-school')
-    console.log(illusionSchoolObj);
-    createSchoolNodes(illusionBlock, illusionSchool, illusionSchoolObj, 'illusion')
-    addButtonClickEventListener(illusionSchoolObj)
-}
+// const request1 = new XMLHttpRequest()
+// request1.open('GET', 'https://fonbeauty.github.io/frostgrave/json/chrono_spells.json')
+// request1.responseType = 'json'
+// request1.send()
+// request1.onload = function () {
+//     const chronoSchoolObj = request1.response
+//     const chronoBlock = document.getElementById('chrono-block')
+//     const chronoSchool = document.getElementById('chrono-school')
+//     console.log(chronoSchoolObj);
+//     createSchoolNodes(chronoBlock, chronoSchool, chronoSchoolObj, 'chrono')
+//     addButtonClickEventListener(chronoSchoolObj)
+// }
+//
+// const request2 = new XMLHttpRequest()
+// request2.open('GET', 'https://fonbeauty.github.io/frostgrave/json/element_spells.json')
+// request2.responseType = 'json'
+// request2.send()
+// request2.onload = function () {
+//     const elementSchoolObj = request2.response
+//     const elemenеBlock = document.getElementById('element-block')
+//     const elementSchool = document.getElementById('element-school')
+//     console.log(elementSchoolObj);
+//     createSchoolNodes(elemenеBlock, elementSchool, elementSchoolObj, 'element')
+//     addButtonClickEventListener(elementSchoolObj)
+// }
+//
+// const request3 = new XMLHttpRequest()
+// request3.open('GET', 'https://fonbeauty.github.io/frostgrave/json/enchant_spells.json')
+// request3.responseType = 'json'
+// request3.send()
+// request3.onload = function () {
+//     const enchantSchoolObj = request3.response
+//     const enchantBlock = document.getElementById('enchant-block')
+//     const enchantSchool = document.getElementById('enchant-school')
+//     console.log(enchantSchoolObj);
+//     createSchoolNodes(enchantBlock, enchantSchool, enchantSchoolObj, 'enchant')
+//     addButtonClickEventListener(enchantSchoolObj)
+// }
+//
+// const request4 = new XMLHttpRequest()
+// request4.open('GET', 'https://fonbeauty.github.io/frostgrave/json/illusion_spells.json')
+// request4.responseType = 'json'
+// request4.send()
+// request4.onload = function () {
+//     const illusionSchoolObj = request4.response
+//     const illusionBlock = document.getElementById('illusion-block')
+//     const illusionSchool = document.getElementById('illusion-school')
+//     console.log(illusionSchoolObj);
+//     createSchoolNodes(illusionBlock, illusionSchool, illusionSchoolObj, 'illusion')
+//     addButtonClickEventListener(illusionSchoolObj)
+// }
 
 function createSchoolNodes(nodeBlock, nodeSchool, schoolObj, school) {
     const spellList = document.createElement('div')
