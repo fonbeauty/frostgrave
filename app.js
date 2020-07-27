@@ -1,5 +1,5 @@
 const request1 = new XMLHttpRequest()
-request1.open('GET', 'https://fonbeauty.github.io/frostgrave/json/chronomancer_spells.json')
+request1.open('GET', 'https://fonbeauty.github.io/frostgrave/json/chrono_spells.json')
 request1.responseType = 'json'
 request1.send()
 request1.onload = function () {
@@ -12,7 +12,7 @@ request1.onload = function () {
 }
 
 const request2 = new XMLHttpRequest()
-request2.open('GET', 'https://fonbeauty.github.io/frostgrave/json/elementalist_spells.json')
+request2.open('GET', 'https://fonbeauty.github.io/frostgrave/json/element_spells.json')
 request2.responseType = 'json'
 request2.send()
 request2.onload = function () {
@@ -25,7 +25,7 @@ request2.onload = function () {
 }
 
 const request3 = new XMLHttpRequest()
-request3.open('GET', 'https://fonbeauty.github.io/frostgrave/json/enchanter_spells.json')
+request3.open('GET', 'https://fonbeauty.github.io/frostgrave/json/enchant_spells.json')
 request3.responseType = 'json'
 request3.send()
 request3.onload = function () {
@@ -38,7 +38,7 @@ request3.onload = function () {
 }
 
 const request4 = new XMLHttpRequest()
-request4.open('GET', 'https://fonbeauty.github.io/frostgrave/json/illusionist_spells.json')
+request4.open('GET', 'https://fonbeauty.github.io/frostgrave/json/illusion_spells.json')
 request4.responseType = 'json'
 request4.send()
 request4.onload = function () {
